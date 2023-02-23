@@ -9,44 +9,134 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
+	<script src="https://kit.fontawesome.com/36b0c2e9ab.js" crossorigin="anonymous"></script>
 	
 </head>
 
 	<body>
+		
+		<div class="container">	
 	
-		<div class="container">
 	<header>
+		<div id="manager" style="display:none">
+			<i class="fa-regular fa-pen-to-square"></i>
+		<p>Mode édition</p>
+		<button>publier les changements</button>
+		</div>
 		<div class="header">
-	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
+	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>
 			<li>
 				<a href=index.html>projets</a>
 			</li>
 			<li>
-				<a href="index.html#contact"">contact</a>
+				<a href="#contact">contact</a>
 			</li>
 			<li>
 				<a href=login.html>login</a>
 			</li>
+				
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
 		</ul>
 	</nav>
 </div>
 </header>
-<main >
-    <section id="login">
-        <h2 >Log In</h1>
-        <form id="formLogin" action="#" method="post">
-            <label for="email">E-mail</label>
-            <input type="email" id="email">
-            <label for="password">Mot de passe</label>
-            <input type="password" id="password">
-            <input type="submit"  value="se connecter" id="connexion">        
-        </form>
-        <a href="#" id="mdp">Mot de passe oublié</a>
-       
-    </section>
+
+<main>
+	<section id="introduction">
+		<figure id="portfolio">
+			<img src="./assets/images/sophie-bluel.png" alt="">
+			<div id="modeManager" style="display:none"><i class="fa-regular fa-pen-to-square"></i>
+			<a href="#" class="js-modal">modifier</a>
+		</div>
+		</figure>
+		<article>
+			<h2>Designer d'espace</h2>
+			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
+			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
+		</article>
+	</section>
+	<section id="portfolio">
+
+			<div class="modification">
+				<h2 >Mes Projets</h2>
+				<div id="mode" style="display:flex"><a href="#modal1" class="js-modal modification-modal"><i class="fa-regular fa-pen-to-square"></i>modifier</a></div>
+		
+		</div>
+		<aside id="modal1"  class="modal" aria-hidden="true" role="dialog" style="display:none">
+			<div class="modal-wrapper js-modal-stop">
+				<div class="flexHautModal">
+					<button id="fleche" class="js-modal"  style="visibility:hidden"><img src="./assets/icons/Arrow_Back.png" href="#modal1" ></button>
+					<button class="js-modal-close"><img src="./assets/icons/fermeture.png" alt="Fermeture"></button>
+				</div>
+				<div class="flexModal">
+					<div id="premiere" style="display:flex">
+						<h2>Galerie photo</h2>
+						<div class="galleryModal">
+					  	</div>
+						<a href="#modal1" class=" js-modal vert" id="ajoutPhoto">Ajouter une photo</a>
+						<a href="#" class="js-modal centre" id="suppressionTotale">Supprimer la galerie</a> 
+					</div>
+				
+					<div id="deuxieme" style="display:none">
+						<h2>Ajout photo</h2>
+						<form enctype="multipart/form-data" method="post" id="fileinfo" onchange="modalAjout()">
+							<div id="photo" onchange="loadFile(event)" >
+								<img id="output" />
+								<div id="disparait">
+								<img id="iconPhoto" src="./assets/icons/photo.png" alt="photo">
+								<button id="photoBtn" onclick="document.getElementById('getFile').click()">+ Ajouter photo</button>
+								<input type="file" id="getFile" onchange="devientVert()" style="display:none"  accept="image/png, image/jpg" maxsize="4mo" required >					
+								<label for ="getFile" id="labelPhoto">jpg, png:4mo max</label>
+							</div>					
+							</div>
+							<div class="champsEntree">	
+								<label for ="titre">Titre</label>
+								<input class="champs" type="text" name="titre" id="titre" onchange="devientVert()">
+								<label for="categorie">Catégorie</label>
+								<select class="champs" name="categorie" id="categorie"onchange="devientVert()" >
+									<option value="" selected disabled >    </option>
+									<option value="1">Objets</option>
+									<option value="2">Appartements</option>
+									<option value="3">Hôtels et restaurants</option>				
+								</select>
+							</div>
+		
+							<input type="submit"value="Valider" id="boutonPhoto"disabled="true" > 
+						</form>	
+					</div>
+			</div>
+			</div>
+		</aside>
+
+		<div id="flexFiltres">
+			<section class="filtres">
+				<button class="vert" id="tous">Tous</button>
+				<button class="vert" id="objets">Objets</button>
+				<button class="vert"id="appartements">Appartements</button>
+				<button class="vert"id="hotels">Hôtels et restaurants</button>
+			</section>
+		</div>
+		<div class="gallery">	
+			
+			
+		</div>
+	</section>
+	<section id="contact">
+		<h2>Contact</h2>
+		<p>Vous avez un projet ? Discutons-en !</p>
+		<form action="#" method="post">
+			<label for="name">Nom</label>
+			<input type="text" name="name" id="name">
+			<label for="email">Email</label>
+			<input type="email" name="email" id="email">
+			<label for="message">Message</label>
+			<textarea name="message" id="message" cols="30" rows="10"></textarea>
+			<input type="submit" value="Envoyer">
+		</form>
+	</section>
 </main>
 </div>
 <footer>
@@ -56,7 +146,15 @@
 		</ul>
 	</nav>
 </footer>
-<script src="login.js"></script>
+
+<script src="travaux.js"></script>
+<script src="modal.js"></script>	
+<script src="modalAjout.js"></script>
+<script src="modalTout.js"></script>
+
+
+
 
 </body>
+
 </html>
