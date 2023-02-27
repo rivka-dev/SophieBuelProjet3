@@ -94,8 +94,7 @@ document.querySelectorAll('.js-modal').forEach(a =>{
     a.addEventListener('click',openModal)//})
 window.addEventListener('mouseup', function(e){
     var obj = document.querySelector("#modal1");    
-    console.log(obj)
-    console.log(e.target)
+   
     if (!obj.contains(e.target)) {
         closeModal(e)
     }
@@ -107,5 +106,5 @@ window.addEventListener('keydown', function(e){
      focusInModal(e)
     }
  })
-
+ 
 

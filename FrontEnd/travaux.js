@@ -55,6 +55,8 @@ async function works(){
     mode.style.display='inline'
      const manager= document.querySelector("#manager")
  manager.style.display='flex'
+ const flexFiltres=document.querySelector('#flexFiltres')
+ flexFiltres.innerHTML=""
     
 
         }   

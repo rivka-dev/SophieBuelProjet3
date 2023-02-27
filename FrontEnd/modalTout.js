@@ -74,7 +74,7 @@ async function modalTout(){
             const premiere=  document.querySelector("#premiere") 
             premiere.style="display:none"; 
             const retour=document.querySelector("#fleche")
-            console.log(retour)
+            
             retour.style="visibility:visible"
             const deuxieme=document.querySelector("#deuxieme")
             deuxieme.style="display:initial" 
@@ -83,7 +83,10 @@ async function modalTout(){
             })                      
         })  
     }
-    deuxModale()    
+    deuxModale() 
+
+    
+       
 modalTout()
 
 
