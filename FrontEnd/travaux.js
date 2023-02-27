@@ -1,8 +1,14 @@
 async function works(){
     const reponse = await fetch('http://localhost:5678/api/works')
-    const travaux= await reponse.json();
+    travaux= await reponse.json()
+        
+   
+  
     //fonction qui genere toute la page web
-    function genererTravaux(travaux){
+    async function genererTravaux(travaux){
+        
+        
+       
         for (let i=0; i < travaux.length; i++){
             // Création des balises 
             const sectionTravaux = document.querySelector(".gallery");
@@ -51,15 +57,19 @@ async function works(){
         const flexFiltres=document.querySelector('#flexFiltres')
         flexFiltres.innerHTML=""   
     }   
+
+}
+works()
     //fonction qui genere toute la modale
-    async function genererModale(travaux){
-        await fetch('http://localhost:5678/api/works',{
+    async function genererModale(){
+       const reponse= await fetch('http://localhost:5678/api/works',{
             method:'GET', 
             headers: {
                 'Content-Type': 'application/json; charset=utf-8',
                 'Authorization': 'Bearer '+window.localStorage.getItem("token")                        
             }
-        })
+        })  
+       const travaux= await reponse.json()           
         for (let i=0; i < travaux.length; i++){
             // Création des balises 
             const sectionTravaux = document.querySelector(".galleryModal")
@@ -99,10 +109,10 @@ async function works(){
             })
         }
     }
-     
+    genererModale()
+  
     //fonction de suppression    
     async function supprimerApi(idWorks){
-        console.log(window.localStorage.getItem("token"))
         const answer=await fetch (`http://localhost:5678/api/works/${idWorks}`,{
             method:'DELETE', 
             headers: {
@@ -110,13 +120,12 @@ async function works(){
                 'Authorization': 'Bearer '+window.localStorage.getItem("token")                        
             }
         })
-        console.log(answer.status)
         if(answer.status===200||answer.status===204){
             console.log("element supprime");
             document.querySelector(".galleryModal").innerHTML=""
             document.querySelector(".gallery").innerHTML=""
-            genererModale(travaux)
-            genererTravaux(travaux)
+         genererModale()
+            works()
         }
     }
     //afficher le formulaire d'ajout et fermer la premiere modale
@@ -136,7 +145,3 @@ async function works(){
         })  
     }
     deuxModale() 
-}
-    
-       
-works()

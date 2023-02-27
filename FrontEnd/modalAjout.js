@@ -15,11 +15,13 @@ async function modalAjout(){
         formData.append("imageUrl", image);
         formData.append("title",  title );
         formData.append("category",  category );
+        console.log(category)
         console.log(formData)      
         let response = await fetch('http://localhost:5678/api/works',{
             method: 'POST',
             headers: {
-                'Authorization': 'Bearer '+window.localStorage.getItem("token")   , 
+                'Authorization': 'Bearer '+window.localStorage.getItem("token")   ,
+                'Accept': "application/json" ,            
             },
             body: formData
         })     
