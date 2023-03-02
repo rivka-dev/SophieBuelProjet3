@@ -3,7 +3,7 @@ let modal=null
 const focusableSelector="button, a, input, textarea"
 let focusables=[]
 let previouslyFocusedElement=null
-let image=document.querySelector("#getFile")
+
 const fenetreModal=document.querySelector("#modal1")
 const retour=document.querySelector("#fleche")
 
@@ -16,8 +16,10 @@ const target=e.target.getAttribute("href")
     }   else{
         modal= await loadModal(target)
     }         
-    focusables=Array.from(modal.querySelectorAll(focusableSelector))
-    previouslyFocusedElement=document.querySelector(':focus')
+   focusables=Array.from(modal.querySelectorAll(focusableSelector))
+   console.log(focusables)
+   previouslyFocusedElement=document.querySelector(':focus')
+    console.log(previouslyFocusedElement)
     modal.style.display=null
     focusables[0].focus()    
     modal.removeAttribute('aria-hidden')
@@ -25,12 +27,14 @@ const target=e.target.getAttribute("href")
     modal.addEventListener('click',closeModal)  
     modal.querySelector('.js-modal-close').addEventListener ('click',closeModal)
     modal.querySelector('.js-modal-stop').addEventListener ('click',stopPropagation)  
-    image.value=""   
+    let image=document.querySelector("#getFile")
+    image.value=""  
+    document.querySelector(".container").style.backgroundColor="rgba(0, 0, 0, 0.3)" 
 }
 //ferme la modal
 const closeModal=function (e){
     if(modal===null) return
-    if(previouslyFocusedElement!==null) previouslyFocusedElement.focus()
+   // if(previouslyFocusedElement!==null) previouslyFocusedElement.focus()
    e.preventDefault()    
    retour.style="visibility:hidden"
     modal.setAttribute('aria-hidden','true')
@@ -45,6 +49,7 @@ const closeModal=function (e){
     }
     modal.addEventListener('animationend',hideModal)
     fermerForm()
+    document.querySelector(".container").style.backgroundColor="initial"
 }
 //efface données formulaire
 const fermerForm=function(){
@@ -66,17 +71,18 @@ const stopPropagation=function (e){
 const focusInModal= function(e){
     e.preventDefault()
     let index=focusables.findIndex(f => f === modal.querySelector(':focus'))
+    console.log(index)
    if(e.shiftKay===true){
     index--
    }else{
     index++
-   }
-    if (index>= focusables.length){
-        index=0
-    }
-    if(index<0){
-        index=focusables.length-1
-    }
+   }if (index>= focusables.length){
+    index=0
+}
+if(index<0){
+    index=focusables.length-1
+}
+    
     focusables[index].focus()
 }
 const loadModal= async function (url){    
@@ -89,18 +95,17 @@ const loadModal= async function (url){
     return element
 }
 
-
+//ferme la modale si en dehors
 document.querySelectorAll('.js-modal').forEach(a =>{
     a.addEventListener('click',openModal)//})
 window.addEventListener('mouseup', function(e){
     var obj = document.querySelector("#modal1");    
-   
-    if (!obj.contains(e.target)) {
-        closeModal(e)
-    }
+        if (!obj.contains(e.target)) {
+            closeModal(e)
+        }
+    })
 })
-})
-
+//empeche l'option de tabulation 
 window.addEventListener('keydown', function(e){
     if(e.key==='Tab' && modal!==null){
      focusInModal(e)

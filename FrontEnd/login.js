@@ -28,9 +28,15 @@ async function connexion(){
        console.log(result.token)
       } else  {
         alert("Erreur dans l'identifiant ou le mot de passe")
-     }  
+     }
+     
     }
   )}
+  
+ 
+  
   connexion()
+
+  
   
   
