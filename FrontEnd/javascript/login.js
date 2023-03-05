@@ -22,8 +22,7 @@ async function connexion(){
   //reponse positive ou negative
       if (response.status === 200) {
         tokenLogin=result.token
-       window.location.replace('index.html');    
-  
+       window.location.replace('index.html');      
        window.localStorage.setItem("token", result.token);
        console.log(result.token)
       } else  {

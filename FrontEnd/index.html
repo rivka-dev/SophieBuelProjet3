@@ -82,13 +82,13 @@
 				
 					<div id="deuxieme" style="display:none">
 						<h2>Ajout photo</h2>
-						<form enctype="multipart/form-data" method="post" id="fileinfo" onchange="modalAjout()">
+						<form enctype="multipart/form-data" method="post" id="fileinfo">
 							<div id="photo" onchange="loadFile(event)" >
 								<img id="output" />
 								<div id="disparait">
 								<img id="iconPhoto" src="./assets/icons/photo.png" alt="photo">
 								<button id="photoBtn" onclick="document.getElementById('getFile').click()">+ Ajouter photo</button>
-								<input type="file" id="getFile" onchange="devientVert()" style="display:none"  accept="image/png, image/jpg" maxsize="4mo" >					
+								<input type="file" id="getFile" onchange="devientVert()" style="display:none"  accept="image/png, image/jpg" maxsize="800ko" >					
 								<label for ="getFile" id="labelPhoto">jpg, png:4mo max</label>
 							</div>					
 							</div>
@@ -147,11 +147,10 @@
 	</nav>
 </footer>
 
-<script src="travaux.js"></script>
-<script src="modal.js"></script>	
-
-
-
+<script src="javascript/travaux.js"></script>
+<script src="javascript/modal.js"></script>
+<script src="javascript/afficherModal.js"></script>	
+<script src="javascript/changementModal.js"></script>	
 
 
 
