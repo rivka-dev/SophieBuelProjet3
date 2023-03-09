@@ -44,7 +44,17 @@ async function genererModale(){
             const idWorks=travaux[i].id
             supprimerApi(idWorks)
         })
-    }
+        //Appel pour tout supprimer
+        const supprimerTout=document.querySelector("#suppressionTotale")
+        supprimerTout.addEventListener("click",async function(event){
+            event.preventDefault()
+            for (let i=0; i < travaux.length; i++){
+                const idWorks=travaux[i].id
+                supprimerApi(idWorks)
+
+        }
+    })
+}
 }
 genererModale()
  

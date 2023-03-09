@@ -13,9 +13,7 @@ async function supprimerApi(idWorks){
        
     }
 }
-async function supprimerTout(){
-    
-}
+
 
 //fonction d'ajout
 async function modalAjout(){     
