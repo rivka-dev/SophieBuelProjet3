@@ -34,7 +34,7 @@
 				<a href="#contact">contact</a>
 			</li>
 			<li>
-				<a href=login.html>login</a>
+				<a id="login" href=login.html>login</a>
 			</li>
 				
 			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
@@ -62,7 +62,7 @@
 
 			<div class="modification">
 				<h2 >Mes Projets</h2>
-				<div id="mode" style="display:flex"><a href="#modal1" class="js-modal modification-modal"><i class="fa-regular fa-pen-to-square"></i>modifier</a></div>
+				<div id="mode" style="display:none"><a href="#modal1" class="js-modal modification-modal"><i class="fa-regular fa-pen-to-square"></i>modifier</a></div>
 		
 		</div>
 		<aside id="modal1"  class="modal" aria-hidden="true" role="dialog" style="display:none">
@@ -88,7 +88,7 @@
 								<div id="disparait">
 								<img id="iconPhoto" src="./assets/icons/photo.png" alt="photo">
 								<button id="photoBtn" onclick="document.getElementById('getFile').click()">+ Ajouter photo</button>
-								<input type="file" id="getFile" onchange="devientVert()" style="display:none"  accept="image/png, image/jpg" maxsize="800ko" >					
+								<input type="file" id="getFile" accept=".png, .jpg" onchange="devientVert()" style="display:none"  >					
 								<label for ="getFile" id="labelPhoto">jpg, png:4mo max</label>
 							</div>					
 							</div>
@@ -104,7 +104,7 @@
 								</select>
 							</div>
 		
-							<input type="submit"value="Valider" id="boutonPhoto"disabled="true" > 
+							<input type="submit"value="Valider" id="boutonPhoto" onclick="erreur()" > 
 						</form>	
 					</div>
 			</div>

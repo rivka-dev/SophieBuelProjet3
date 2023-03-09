@@ -21,8 +21,8 @@ async function supprimerTout(){
 async function modalAjout(){     
     // Création de l’objet .   
     const submitLogin=document.querySelector("#fileinfo")
-    submitLogin.addEventListener("submit", async function(event){      
-        event.preventDefault()             
+    submitLogin.addEventListener("submit", async function(e){      
+        e.preventDefault()             
         const image =document.querySelector('#getFile').files[0];       
         const title=document.querySelector("#titre").value   
         const category=parseInt(document.querySelector("#categorie").value)
@@ -39,21 +39,24 @@ async function modalAjout(){
         })     
         
         if (response.status === 201) {
-            console.log("Envoyé");
+          
             raffraichi()  
-           closeModal(event)   
+            alert("Le projet a été enregistré")
+            fermerForm()        
             
-        } else {
-            console.log(`erreur  lors de la tentative d’envoi du fichier`);
-        }  
+        } //else {
+            // alert(`erreur  lors de la tentative d’envoi du fichier`);
+            
+       // }
+        
+            
+         
     })
 }
 modalAjout()
 ///fonction qui ajoute la photo et la transforme en binaire     
 function loadFile(event) {
-    const img = document.getElementById('output');
- 
-   
+    const img = document.getElementById('output'); 
 
     img.src = URL.createObjectURL(event.target.files[0])          
     const file = event.target.files[0] 
@@ -63,15 +66,15 @@ function loadFile(event) {
     }
         const reader = new FileReader()     
         reader.addEventListener('load', () => {
-            img.src = reader.result;   
-            
+            img.src = reader.result;               
         })       
         if (file) {
             reader.readAsDataURL(file);            
         }
     document.getElementById('disparait').style.display = 'none';
-    document.getElementById('disparait').type = 'submit'
+   // document.getElementById('disparait').type = 'submit'
 }
+
      
 function devientVert() {
     const bouton=document.getElementById('boutonPhoto')
@@ -81,7 +84,9 @@ function devientVert() {
     const rempli=(img.value!=="")&&(titre.value!=="")&&(categorie.value!=="")       
     if(rempli===true){        
         bouton.style.background='#1D6154'
-        bouton.disabled = false;            
+        document.querySelector("#boutonPhoto").removeAttribute("onclick");
+                 
+     
     }
 }
 function raffraichi(){
@@ -91,8 +96,7 @@ function raffraichi(){
     works()
 }
 
- 
-     /*window.onbeforeunload = () => {
-       
-         window.localStorage.removeItem('token');
-      }*/
+ function erreur(){
+    alert(`erreur  lors de la tentative d’envoi du fichier`)
+ }
+     

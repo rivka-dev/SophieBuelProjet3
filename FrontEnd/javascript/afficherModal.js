@@ -58,8 +58,8 @@ function deuxModale(){
         retour.style="visibility:visible"
         const deuxieme=document.querySelector("#deuxieme")
         deuxieme.style="display:initial" 
-        retour.addEventListener("click",function(){
-            fermerForm()               
+        retour.addEventListener("click",function(){          
+            fermerForm()                    
         })                      
     })  
 }
