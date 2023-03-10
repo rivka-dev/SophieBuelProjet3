@@ -17,9 +17,9 @@ const target=e.target.getAttribute("href")
         modal= await loadModal(target)
     }         
    focusables=Array.from(modal.querySelectorAll(focusableSelector))
-   console.log(focusables)
+  
    previouslyFocusedElement=document.querySelector(':focus')
-    console.log(previouslyFocusedElement)
+
     modal.style.display=null
     focusables[0].focus()    
     modal.removeAttribute('aria-hidden')

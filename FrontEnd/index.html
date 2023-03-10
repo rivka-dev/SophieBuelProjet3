@@ -83,20 +83,20 @@
 					<div id="deuxieme" style="display:none">
 						<h2>Ajout photo</h2>
 						<form enctype="multipart/form-data" method="post" id="fileinfo">
-							<div id="photo" onchange="loadFile(event)" >
+							<div id="photo"  >
 								<img id="output" />
 								<div id="disparait">
 								<img id="iconPhoto" src="./assets/icons/photo.png" alt="photo">
-								<button id="photoBtn" onclick="document.getElementById('getFile').click()">+ Ajouter photo</button>
-								<input type="file" id="getFile" accept=".png, .jpg" onchange="devientVert()" style="display:none"  >					
+								<button id="photoBtn" >+ Ajouter photo</button>
+								<input type="file"class="vert" id="getFile" accept=".png, .jpg"  style="display:none"  >					
 								<label for ="getFile" id="labelPhoto">jpg, png:4mo max</label>
 							</div>					
 							</div>
 							<div class="champsEntree">	
 								<label for ="titre">Titre</label>
-								<input class="champs" type="text" name="titre" id="titre" onchange="devientVert()">
+								<input class="champs" class="vert" type="text" name="titre" id="titre" >
 								<label for="categorie">Catégorie</label>
-								<select class="champs" name="categorie" id="categorie"onchange="devientVert()" >
+								<select class="champs" class="vert" name="categorie" id="categorie" >
 									<option value="" selected disabled >    </option>
 									<option value=1>Objets</option>
 									<option value=2>Appartements</option>
@@ -104,7 +104,7 @@
 								</select>
 							</div>
 		
-							<input type="submit"value="Valider" id="boutonPhoto" onclick="erreur()" > 
+							<input type="submit"value="Valider" id="boutonPhoto"  > 
 						</form>	
 					</div>
 			</div>
