@@ -51,9 +51,7 @@ table {
 *{
     box-sizing:border-box
 }
-*:focus{
-    box-shadow: 0 0 10px blue
-}
+
 main{
 	max-width: 1140px;
 	width:100%;
@@ -118,6 +116,7 @@ nav a {
 a:hover {
 	color: #B1663C;
 }
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -254,12 +253,15 @@ footer nav ul {
 }
 
 /*barre manager*/
+.modeManager{
+	display:none;
+}
 header{
 	flex-direction:column;
 	width:100%;
 	
 }
-#manager{
+#barreHaut{
 	background:black;
 	display:flex;
 	justify-content: center;
@@ -267,13 +269,13 @@ header{
 	align-items:center;
 	
 }
-#manager .fa-regular,#manager p{
+#barreHaut .fa-regular,#barreHaut p{
 	color:white;
 	margin:auto 10px;
 	font-weight:400;
 	font-size: 16px;
 }
-#manager button{
+#barreHaut button{
 	background: #FFFFFF;
 border-radius: 60px;
 width:216px;
@@ -290,6 +292,9 @@ font-weight:500;
 	margin-bottom:50px;
 }
 /*modal*/
+#modal1{
+	display:none;
+}
 .modification{
 	display:flex;
 	width:100%;
@@ -311,6 +316,7 @@ font-weight:500;
 #fleche{
 	background: none;
 	border:none;
+	visibility:hidden;
 }
 .modal{
     display:flex;
@@ -402,6 +408,9 @@ figureModale{
 	text-decoration:none;
 }	
 /*modale2*/ 
+#deuxieme{
+	display: none;
+}
 #photo, #disparait{
 	height: 190px;
 	background: #E8F1F7;
@@ -433,6 +442,9 @@ figureModale{
 #labelPhoto{
 	font-weight:400;
 	font-size:10px;
+}
+#getFile{
+	display:none;
 }
 .champs{
 	height:51px;

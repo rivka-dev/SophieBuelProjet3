@@ -1,22 +1,11 @@
 async function works(){
     const reponse = await fetch('http://localhost:5678/api/works')
-    travaux= await reponse.json() 
-
+    travaux= await reponse.json()
    //fonction qui genere toute la page web
-    async function genererTravaux(travaux){  
-        const sectionTravaux = document.querySelector(".gallery");     
+    async function genererTravaux(travaux){          
         for (let i=0; i < travaux.length; i++){
-            // Création des balises             
-            const figureElement=document.createElement("figure");
-            const imageElement = document.createElement("img");            
-            const titreElement = document.createElement("figcaption");
-            imageElement.src = travaux[i].imageUrl;
-            titreElement.innerText = travaux[i].title;
-            imageElement.setAttribute("crossorigin","anonymous");
-            //Rattachement de nos balises au DOM
-            sectionTravaux.appendChild(figureElement);
-            figureElement.appendChild(imageElement)
-            figureElement.appendChild(titreElement);
+            const travail=travaux[i]
+            genererTravauxIndividuels(travail)     
         }
     }
     genererTravaux(travaux);
@@ -41,30 +30,25 @@ async function works(){
         genererTravaux(travaux);
     })
 
-    //afficher mode manager
-    if (window.localStorage.getItem("token")!==null){
-        const modeManager= document.querySelector("#modeManager")
-        modeManager.style.display='inline'
-        const mode= document.querySelector("#mode")
-        mode.style.display='inline'
-        const manager= document.querySelector("#manager")
-        manager.style.display='flex'
-        const flexFiltres=document.querySelector('#flexFiltres')
-        flexFiltres.innerHTML=""  
-        const login=document.querySelector("#login") 
-        login.innerHTML="logout"
-        login.id="logout"
-        login.href="index.html"
-    } 
-    const boutonLogout=document.querySelector("#logout");
-    boutonLogout.addEventListener("click",function(){    
-        window.localStorage.removeItem('token');
-        window.location.href = "index.html"
-
-    })  
+    
 }
 works()
 
+function genererTravauxIndividuels(travail){
+    const sectionTravaux = document.querySelector(".gallery");             
+    const figureElement=document.createElement("figure");
+    figureElement.dataset.id = travail.id;
+    console.log(figureElement.dataset.id)
+    const imageElement = document.createElement("img");            
+    const titreElement = document.createElement("figcaption");
+    imageElement.src = travail.imageUrl;
+    titreElement.innerText = travail.title;
+    imageElement.setAttribute("crossorigin","anonymous");
+    //Rattachement de nos balises au DOM
+    sectionTravaux.appendChild(figureElement);
+    figureElement.appendChild(imageElement)
+    figureElement.appendChild(titreElement);
+}
 
 
 

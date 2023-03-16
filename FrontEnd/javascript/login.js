@@ -22,9 +22,25 @@ async function connexion(){
       alert("Erreur dans l'identifiant ou le mot de passe")
     }     
   })
+  
 }
 connexion()
 
-  
-  
+  //afficher mode manager
+  if (window.localStorage.getItem("token")!==null){
+    const modeManager= document.querySelectorAll(".modeManager")
+    for(i=0;i<modeManager.length;i++){
+        modeManager[i].style.display='inline'
+    }        
+    const flexFiltres=document.querySelector('#flexFiltres')
+    flexFiltres.innerHTML=""  
+    const login=document.querySelector("#login") 
+    login.innerHTML="logout"
+    login.id="logout"
+    login.href="index.html"
+} 
+const boutonLogout=document.querySelector("#logout");
+boutonLogout.addEventListener("click",function(){    
+    window.localStorage.removeItem('token');
+})  
   

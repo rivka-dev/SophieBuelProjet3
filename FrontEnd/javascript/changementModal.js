@@ -1,5 +1,6 @@
 //fonction de suppression    
-async function supprimerApi(idWorks){
+async function supprimerElement(idWorks,event){        
+    event.preventDefault();            
     const answer=await fetch (`http://localhost:5678/api/works/${idWorks}`,{
         method:'DELETE', 
         headers: {
@@ -8,9 +9,10 @@ async function supprimerApi(idWorks){
         }
     })
     if(answer.status===200||answer.status===204){
-   
-        raffraichi()
-       
+        const list=document.querySelectorAll(`[data-id="${idWorks}"]`)
+        for (i=0;i<list.length;i++){
+            list[i].remove()
+        }           
     }
 }
 
@@ -46,63 +48,61 @@ async function modalAjout(){
                 },
                 body: formData
             })    
-            if (response.status === 201) {            
-                raffraichi()  
+            if (response.status === 201){                 
+                const travaux= await response.json()               
+                creerModal(travaux)
+                genererTravauxIndividuels(travaux)
                 alert("Le projet a été enregistré")
-                fermerForm()       
+                modalInitial() //fonction dans modal.js
+                }            
             } 
-        }    
-    })
-}
+        })    
+    }
 modalAjout()
 
 ///fonction qui affiche la photo et la transforme en binaire  
 function loadFile() {
     const photo=document.getElementById('photoBtn')
     photo.addEventListener('click',function(event){
-        event.preventDefault()
-     
+        event.preventDefault()     
         document.getElementById('getFile').click()
     })
     const photoload=document.getElementById('photo')
-    photoload.addEventListener('change',function(event){
-       
+    photoload.addEventListener('change',function(event){       
         const img = document.getElementById('output'); 
-        img.src = URL.createObjectURL(event.target.files[0])          
-        const file = event.target.files[0] 
-        if(file.size>4194304){
+        const file = event.target.files[0]                
+        if(file.size>4194304){           
             alert('votre image doit être inférieure à 4 Mo')
             return
+        }else{
+            img.src = URL.createObjectURL(file) 
         }
-            const reader = new FileReader()     
-            reader.addEventListener('load', () => {
-                img.src = reader.result;               
-            })       
-            if (file) {
-                reader.readAsDataURL(file);            
-            }
+        const reader = new FileReader()     
+        reader.addEventListener('load', () => {
+            img.src = reader.result;               
+        })       
+        if (file) {
+            reader.readAsDataURL(file);            
+        }
         document.getElementById('disparait').style.display = 'none';
     })
 }
 loadFile() 
-    
-
-
-     
-function devientVert() {
-    const bouton=document.getElementById('boutonPhoto')
-    const img = document.getElementById('getFile');
+  
+//bouton en vert si tous les champs sont remplis
+function vert(){
+    const image=document.getElementById('getFile')
     const titre=document.getElementById('titre')
     const categorie=document.getElementById('categorie')
-    const rempli=(img.value!=="")&&(titre.value!=="")&&(categorie.value!=="")       
-    if(rempli===true){        
-        bouton.style.background='#1D6154'
-        document.querySelector("#boutonPhoto").removeAttribute("onclick");
-        }
-}
-function raffraichi(){
-    document.querySelector(".galleryModal").innerHTML=""
-    document.querySelector(".gallery").innerHTML=""
-    genererModale()
-    works()
-}
+    const bouton=document.getElementById('boutonPhoto')
+    const green=document.querySelectorAll(".green")     
+    for(let i=0;i<green.length;i++){
+        green[i].addEventListener('change',function(){  
+            const rempli=(image.value!=="")&&(titre.value!=="")&&(categorie.value!=="")       
+            if(rempli===true){        
+                bouton.style.background='#1D6154'
+            }
+        })    
+    }}
+vert()
+
