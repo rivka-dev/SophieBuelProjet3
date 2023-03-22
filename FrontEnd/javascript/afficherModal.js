@@ -56,27 +56,38 @@ function creerModal(travailActuel){
     sectionTravaux.appendChild(figureElement);
     figureElement.appendChild(imageElement)
     figureElement.appendChild(titreElement); 
+
+    	
     //suppression
     buttonSupprimerElement.addEventListener("click",async function(event){
         const idWorks=travailActuel.id
         supprimerElement(idWorks,event)        
-    })
-        
+    })        
 }
      
 //afficher le formulaire d'ajout et fermer la premiere modale
-function deuxModale(){         
+function deuxModale(){     
     const secondeModale=document.querySelector("#ajoutPhoto");
-    secondeModale.addEventListener("click",function(){ 
+    secondeModale.addEventListener("click",async function(){ 
         const premiere=  document.querySelector("#premiere") 
         premiere.style="display:none"; 
         const retour=document.querySelector("#fleche")             
         retour.style="visibility:visible"
         const deuxieme=document.querySelector("#deuxieme")
         deuxieme.style="display:initial" 
+        const reponse = await fetch('http://localhost:5678/api/categories')
+        const categories= await reponse.json()
+        for(i=0;i<categories.length;i++){
+            const categoriesModal=document.querySelector("#categorie")
+            const optionElement=document.createElement("option")
+            optionElement.value=categories[i].id
+            console.log(optionElement.value)
+            optionElement.innerText=categories[i].name
+            categoriesModal.appendChild(optionElement)
+        }
         retour.addEventListener("click",function(){          
             modalInitial()                    
-        })                      
-    })  
+        })    
+    })
 }
 deuxModale() 

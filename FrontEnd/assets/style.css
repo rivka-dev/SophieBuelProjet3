@@ -208,7 +208,7 @@ form{
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-input[type="submit"], .vert:focus-within,  .vert{
+input[type="submit"], .vert:focus-within,  .vert, .filtre,.filtre.active{
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
@@ -217,19 +217,20 @@ input[type="submit"], .vert:focus-within,  .vert{
 	text-align: center;
 	border-radius: 60px ;	
 }
-.filtres *{
-	width:180px;
-}
-.centre{
-	text-align:center;
-}
-.filtres button{
+.filtre{
 	color: #1D6154;
 	background-color: white;
 	margin-left: 10px;
 	margin-right: 10px;
 	border:1px solid #1D6154;
 }
+.filtres *{
+	width:180px;
+}
+.centre{
+	text-align:center;
+}
+
 footer{
 	background: #FFF;
 	padding-bottom: 20px;
