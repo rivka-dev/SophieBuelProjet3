@@ -19,7 +19,7 @@ After the meeting and Charlotte's letter, you list your 3 main missions. You mus
 Test account for Sophie Bluel:
 ```
 email: sophie.bluel@test.tld
-Password: Sophia
+Password: S0phie
 ```
-Link to view [Swagger documentation](http://localhost:5678/api-docs/)
+Link to view [Swagger documentation](http://localhost:5678/api-docs/)  
 To read the documentation, use Chrome or Firefox
