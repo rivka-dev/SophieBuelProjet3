@@ -1,31 +1,25 @@
-# Créez une page web dynamique avec JavaScript
-Sophie Bluel - Architecte d'intérieur
-## Badges
-![image](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
-![image](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
-![image](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
-![image](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-## Scénario
-Vous travaillez comme développeur front-end pour l’agence ArchiWebos qui comprend 50 salariés.  
-Ayant terminé votre dernier projet avec un peu d'avance, vous êtes envoyé en renfort comme développeur front-end d’une équipe qui travaille sur la conception du site portfolio d’une architecte d’intérieur.  
-Nous sommes lundi matin et c’est l’heure de votre premier brief d’équipe pour ce projet.  
+    
+# Create a dynamic web page with JavaScript
+Sophie Bluel - Interior designer
+## Script
+You work as a front-end developer for the ArchiWebos agency, which has 50 employees.
+Having finished your last project a little ahead of time, you are sent to reinforce the front-end developer of a team working on the design of an interior designer's portfolio site.
+It's Monday morning and it's time for your first team brief for this project.
 ### Missions
-Après la réunion et le mail de Charlotte, vous listez vos 3 missions principales. Vous devez donc développer :  
-  ➣ la page de présentation des travaux de l'architecte (à partir du HTML fourni)  
-  ➣ la page de connexion de l'administrateur du site (le client) (code à créer de zéro)  
-  ➣ la modale permettant d'uploader de nouveaux médias (code à créer from scratch).  
-## Guide d'installation
-1. Clonez le repo  
-2. Executez la commande `npm install` dans le dossier backend pour installer les dépendances du projet  
-3. Une fois les dépendances installées lancez le projet avec la commande `npm start`
-4. Utilisez Live Server dans le dossier frontend pour visualiser le projet
+After the meeting and Charlotte's letter, you list your 3 main missions. You must therefore develop:
+  ➣ the presentation page of the architect's work (from the HTML provided)
+  ➣ the site administrator (customer) login page (code to be created from scratch)
+  ➣ the modality for uploading new media (code to be created from scratch).
+## Installation guide
+1. Clone the repository
+2. Run `npm install` command in backend folder to install project dependencies
+3. Once the dependencies are installed launch the project with the command `npm start`
+4. Use Live Server in the frontend folder to view the project
    
-Compte de test pour Sophie Bluel :  
+Test account for Sophie Bluel:
 ```
 email: sophie.bluel@test.tld
-password: S0phie
-```  
-Lien pour voir la [documentation Swagger](http://localhost:5678/api-docs/)  
-Pour lire la documentation, utiliser Chrome ou Firefox
-    
-    
+Password: Sophia
+```
+Link to view [Swagger documentation](http://localhost:5678/api-docs/)
+To read the documentation, use Chrome or Firefox
